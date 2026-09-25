@@ -1,0 +1,9 @@
+{
+  "features": {
+    "ghcr.io/mamba-org/devcontainer-features/micromamba:1": {
+      "version": "1.2.0",
+      "resolved": "ghcr.io/mamba-org/devcontainer-features/micromamba@sha256:0176fe3ea695d7c9ba4283930378b3837add37cbbf78366bb15cc8eb5aaadeca",
+      "integrity": "sha256:0176fe3ea695d7c9ba4283930378b3837add37cbbf78366bb15cc8eb5aaadeca"
+    }
+  }
+}

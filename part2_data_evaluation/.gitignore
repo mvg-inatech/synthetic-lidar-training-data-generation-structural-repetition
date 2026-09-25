@@ -1,0 +1,4 @@
+.venv/
+real_data_unprocessed/
+
+CC_tmp/

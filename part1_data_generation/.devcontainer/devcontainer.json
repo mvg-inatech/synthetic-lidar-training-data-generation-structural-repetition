@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
+{
+	"name": "brunklaus-scan-to-bim-synthetic-data-generation",
+	"build": {
+		"context": "..",
+		"dockerfile": "Dockerfile"
+	},
+	// There is a micromamber devcontainer image, but it is outdated.
+	"features": {
+		"ghcr.io/mamba-org/devcontainer-features/micromamba:1": {
+			"channels": "conda-forge"
+		}
+	},
+	"runArgs": [
+		"--cpus=60",
+		"--memory=160G"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"charliermarsh.ruff",
+				"njpwerner.autodocstring",
+				"redhat.vscode-xml"
+			]
+		}
+	}
+}

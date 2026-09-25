@@ -1,0 +1,27 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
+{
+	"name": "brunklaus-scan-to-bim-synthetic-data-evaluation",
+	"build": {
+		"context": "..",
+		"dockerfile": "Dockerfile"
+	},
+	"runArgs": [
+		"--cpus=20",
+		"--memory=96G",
+		"--shm-size=16G",
+		"--gpus", "device=0" // adjust GPU device index for your machine
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"charliermarsh.ruff",
+				"njpwerner.autodocstring",
+				"tamasfe.even-better-toml",
+			]
+		}
+	},
+	"postStartCommand": "uv sync --locked && uv pip install pointcept/libs/pointops --no-build-isolation"
+}

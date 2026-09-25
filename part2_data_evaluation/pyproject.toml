@@ -1,0 +1,65 @@
+[project]
+name = "part2-data-evaluation"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "torch==2.5.0+cu124",
+    "torchvision==0.20.0+cu124",
+    "pyg_lib",
+    "torch_scatter",
+    "torch_sparse",
+    "torch_cluster",
+    "torch_spline_conv",
+    "torch_geometric",
+    "spconv-cu124",
+    "scipy",
+    "einops",
+    "scikit-learn",
+    "plyfile",
+    "open3d",
+    "timm",
+    "yapf",
+    "wandb",
+    "tensorboardX",
+    "flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.5cxx11abiFALSE-cp311-cp311-linux_x86_64.whl",
+    "laspy[lazrs]",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[[tool.uv.index]]
+name = "pyg-cu124"
+url = "https://data.pyg.org/whl/torch-2.5.0+cu124.html"
+format = "flat"
+explicit = true
+
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu124" }
+torchvision = { index = "pytorch-cu124" }
+pyg_lib = { index = "pyg-cu124" }
+torch_scatter = { index = "pyg-cu124" }
+torch_sparse = { index = "pyg-cu124" }
+torch_cluster = { index = "pyg-cu124" }
+torch_spline_conv = { index = "pyg-cu124" }
+
+
+# Integrating the pointops local package install here didn't work. It required setuptools, which was not installed during build, because uv always wants to install pointops first, even if it was declared at `project.optional-dependencies` and the `--extra pointops` parameter wasn't passed to `uv sync` (bug?)...
+# Old approach:
+    #[tool.uv.sources]
+    #pointops = { path = "pointcept/libs/pointops" }
+    
+    #[project.optional-dependencies]
+    #pointops = ["pointops"]
+    
+    #[tool.uv]
+    #no-build-isolation-package = ['pointops']
+
+
+[tool.ruff]
+line-length = 160
